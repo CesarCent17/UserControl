@@ -1,10 +1,27 @@
 package com.usercontrol.UserControl.models;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private long id;
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "apellido")
+    private String apellido;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "fechaNac")
+    private LocalDate fechaNac;
 
     public User() {
     }
@@ -16,12 +33,6 @@ public class User {
         this.email = email;
         this.fechaNac = fechaNac;
     }
-
-    private String nombre;
-    private String apellido;
-    private String email;
-    private LocalDate fechaNac;
-
 
     public long getId() {
         return id;
@@ -62,6 +73,5 @@ public class User {
     public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
-
 
 }
